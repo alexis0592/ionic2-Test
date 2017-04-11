@@ -11,12 +11,13 @@ export class ListPage {
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
-  products: any;
+  public products: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public productService: ProductService) {
     // If we navigated to this page, we will have an item available as a nav param
-    /*this.selectedItem = navParams.get('item');  
+    this.selectedItem = navParams.get('item');  
 
+    this.searchProductService();
 
     // Let's populate this page with some filler content for funzies
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
@@ -29,14 +30,15 @@ export class ListPage {
         note: 'This is item #' + i,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
-    }*/
+    }
 
-   // this.searchProductService();
   }
 
   searchProductService(){
-      this.productService.load().then(data => {
+      this.productService.load()
+      .then(data => {
         this.products = data;
+        console.log(data);
       });
     }
 

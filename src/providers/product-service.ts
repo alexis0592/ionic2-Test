@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, JsonpModule} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -17,6 +17,7 @@ export class ProductService {
     console.log('Hello ProductService Provider');
   }
 
+
  load() {
   if (this.data) {
     // already loaded data
@@ -33,7 +34,7 @@ export class ProductService {
       .subscribe(data => {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
-        this.data = data.results;
+        this.data = data;
         resolve(this.data);
       });
   });
